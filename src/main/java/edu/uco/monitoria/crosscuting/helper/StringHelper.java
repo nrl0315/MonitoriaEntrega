@@ -2,7 +2,7 @@ package edu.uco.monitoria.crosscuting.helper;
 
 import static edu.uco.monitoria.crosscuting.helper.ObjectHelper.getDefault;
 
-public class StringHelper {
+public final class StringHelper {
     public static final String EMPTY = "";
 
     private StringHelper(){

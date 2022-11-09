@@ -5,6 +5,7 @@ import static edu.uco.monitoria.crosscuting.helper.ObjectHelper.getDefault;
 public final class NumberHelper {
 
     public static final byte ZERO = 0;
+    public static final double DECIMAL_ZERO = 0.0;
     private NumberHelper(){
         super();
     }
