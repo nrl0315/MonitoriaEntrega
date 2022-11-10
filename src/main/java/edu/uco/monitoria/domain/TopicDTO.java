@@ -3,8 +3,9 @@ package edu.uco.monitoria.domain;
 import java.util.UUID;
 import static edu.uco.monitoria.crosscuting.helper.StringHelper.EMPTY;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
+import static edu.uco.monitoria.domain.builder.CourseDTOBuilder.getCourseDTOBuilder;
 
-public class TopicDTO {
+public final class TopicDTO {
     private CourseDTO course;
     private UUID id;
     private String name;
@@ -14,17 +15,18 @@ public class TopicDTO {
         setId(getDefaultUUID(id));
         setName(EMPTY);
         setDescription(EMPTY);
-
+        setCourse(getCourseDTOBuilder().build());
     }
 
-    public TopicDTO(UUID id, String name, String description) {
+    public TopicDTO(final UUID id, final String name, final String description, final CourseDTO course) {
         setId(getDefaultUUID(id));
         setName(name);
         setDescription(description);
+        setCourse(course);
     }
 
-    public final static TopicDTO create(final UUID id, final String name, final String description){
-        return new TopicDTO(id,name,description);
+    public final static TopicDTO create(final UUID id, final String name, final String description, final CourseDTO course){
+        return new TopicDTO(id,name,description,course);
     }
 
     public CourseDTO getCourse() {
@@ -39,8 +41,8 @@ public class TopicDTO {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setId(final UUID id) {
+        this.id = getDefaultUUID(id);
     }
 
     public String getName() {

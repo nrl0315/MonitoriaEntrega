@@ -48,7 +48,7 @@ public final class MonitorDTO {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(final UUID id) {
         this.id = getDefaultUUID(id);
     }
 

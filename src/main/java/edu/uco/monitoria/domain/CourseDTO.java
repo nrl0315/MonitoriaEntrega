@@ -5,7 +5,7 @@ import static edu.uco.monitoria.crosscuting.helper.StringHelper.EMPTY;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.monitoria.crosscuting.helper.NumberHelper.ZERO;
 
-public class CourseDTO {
+public final class CourseDTO {
     private UUID id;
     private String name;
     private int semester;
@@ -31,7 +31,7 @@ public class CourseDTO {
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.id = getDefaultUUID(id);
     }
 
     public String getName() {
