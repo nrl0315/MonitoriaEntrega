@@ -1,4 +1,4 @@
-package edu.uco.monitoria.data.dao.relational;
+package edu.uco.monitoria.data.dao;
 
 import edu.uco.monitoria.domain.ScheduleDTO;
 

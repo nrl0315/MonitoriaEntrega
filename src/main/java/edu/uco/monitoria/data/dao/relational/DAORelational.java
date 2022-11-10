@@ -1,4 +1,4 @@
-package edu.uco.monitoria.data.dao.relational.sqlserver;
+package edu.uco.monitoria.data.dao.relational;
 
 import edu.uco.monitoria.crosscuting.messages.Messages;
 

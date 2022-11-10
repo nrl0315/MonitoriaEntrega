@@ -1,9 +1,12 @@
 package edu.uco.monitoria.domain;
 
+import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
+
 import java.util.Date;
 import java.util.UUID;
 import static edu.uco.monitoria.crosscuting.helper.DateHelper.getDefaultDate;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
+import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getUUIDFromString;
 
 public final class ScheduleDTO {
     private UUID id;
@@ -24,6 +27,10 @@ public final class ScheduleDTO {
 
     public static final ScheduleDTO create(final UUID id, final short startDate, final short endDate){
         return new ScheduleDTO(id,startDate,endDate);
+    }
+
+    public static final ScheduleDTO create(final String id,final short startDate, final short endDate ){
+        return new ScheduleDTO(getUUIDFromString(id),startDate,endDate);
     }
 
     public UUID getId() {
@@ -48,5 +55,9 @@ public final class ScheduleDTO {
 
     public void setEndDate(short endDate) {
         this.endDate = endDate;
+    }
+
+    public final String getUUIDAsString(){
+        return UUIDHelper.getUUIDAsString(getId());
     }
 }

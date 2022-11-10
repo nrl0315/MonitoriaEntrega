@@ -4,7 +4,7 @@ import edu.uco.monitoria.crosscuting.exception.crosscuting.CrosscutingCustomExce
 import edu.uco.monitoria.crosscuting.exception.data.DataCustomException;
 import edu.uco.monitoria.crosscuting.helper.SqlConnectionHelper;
 import edu.uco.monitoria.crosscuting.messages.Messages;
-import edu.uco.monitoria.data.dao.relational.*;
+import edu.uco.monitoria.data.dao.*;
 
 import java.sql.Connection;
 

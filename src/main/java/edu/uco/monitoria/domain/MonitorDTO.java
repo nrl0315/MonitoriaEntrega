@@ -6,6 +6,8 @@ import static edu.uco.monitoria.crosscuting.helper.NumberHelper.DECIMAL_ZERO;
 import static edu.uco.monitoria.crosscuting.helper.StringHelper.EMPTY;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.monitoria.crosscuting.helper.NumberHelper.ZERO;
+import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getUUIDFromString;
+
 import java.util.UUID;
 
 public final class MonitorDTO {
@@ -41,6 +43,11 @@ public final class MonitorDTO {
     public static final MonitorDTO create(final UUID id, final String name, final String surname, final String email, final int phoneNumber, final String degree,
                                           final double note){
         return new MonitorDTO(id,name,surname,email,phoneNumber,degree,note);
+    }
+
+    public static final MonitorDTO create(final String id, final String name, final String surnane, final String email, final int phoneNumber, final String degree,
+                                    final double note){
+        return new MonitorDTO(getUUIDFromString(id),name,surnane,email,phoneNumber,degree,note);
     }
 
 
@@ -98,5 +105,8 @@ public final class MonitorDTO {
 
     public void setNote(double note) {
         this.note = note;
+    }
+    public final String getUUIDAsString(){
+        return UUIDHelper.getUUIDAsString(getId());
     }
 }

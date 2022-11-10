@@ -1,9 +1,12 @@
 package edu.uco.monitoria.domain;
 
+import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
+
 import java.util.UUID;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.monitoria.crosscuting.helper.StringHelper.EMPTY;
 import static edu.uco.monitoria.crosscuting.helper.NumberHelper.ZERO;
+import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getUUIDFromString;
 
 public final class StudentDTO {
     private UUID id;
@@ -31,8 +34,12 @@ public final class StudentDTO {
         setDegree(degree);
     }
 
-    public static final StudentDTO create(UUID id, String name, String surname, String email, int phoneNumber, String degree){
+    public static final StudentDTO create(final UUID id, final String name, final String surname, final String email, final int phoneNumber, final String degree){
         return new StudentDTO(id,name,surname,email,phoneNumber,degree);
+    }
+
+    public static final StudentDTO create(final String id, final String name, final String surname, final String email, final int phoneNumber, final String degree){
+        return new StudentDTO(getUUIDFromString(id),name, surname,email,phoneNumber,degree);
     }
 
     public UUID getId() {
@@ -81,5 +88,9 @@ public final class StudentDTO {
 
     public void setDegree(String degree) {
         this.degree = degree;
+    }
+
+    public final String getUUIDAsString(){
+        return UUIDHelper.getUUIDAsString(getId());
     }
 }

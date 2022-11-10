@@ -38,4 +38,15 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_INIT_TRANSACTION = "There was a problem trying to init transaction";
     }
 
+    public static class UUIDHelper{
+        private UUIDHelper(){
+            super();
+        }
+
+        public static final String TECHNICAL_INVALID_STRING_TO_CREATE_UUID = "There was an error when trying to create the UUID since " +
+                "the argument do not match the format";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_CREATING_UUID_FROM_STRING = "There is an unexpected problem when trying to " +
+                "convert the string to UUID ";
+    }
+
 }

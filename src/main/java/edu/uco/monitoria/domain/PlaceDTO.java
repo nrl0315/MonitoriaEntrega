@@ -1,9 +1,12 @@
 package edu.uco.monitoria.domain;
 
+import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
+
 import java.util.UUID;
 import static edu.uco.monitoria.crosscuting.helper.StringHelper.EMPTY;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.monitoria.crosscuting.helper.NumberHelper.ZERO;
+import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getUUIDFromString;
 
 public final class PlaceDTO {
     private UUID id;
@@ -24,6 +27,10 @@ public final class PlaceDTO {
 
     public static final PlaceDTO create(final UUID id, final String block, final String classRoom){
         return new PlaceDTO(id,block,classRoom);
+    }
+
+    public static final PlaceDTO create(final String id, final String block, final String classRoom){
+        return new PlaceDTO(getUUIDFromString(id),block,classRoom);
     }
 
     public UUID getId() {
@@ -48,5 +55,9 @@ public final class PlaceDTO {
 
     public void setClassRoom(String classRoom) {
         this.classRoom = classRoom;
+    }
+
+    public final String getUUIDAsString(){
+        return UUIDHelper.getUUIDAsString(getId());
     }
 }

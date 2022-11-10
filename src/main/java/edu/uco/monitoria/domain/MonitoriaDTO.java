@@ -1,7 +1,10 @@
 package edu.uco.monitoria.domain;
 
+import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
+
 import java.util.UUID;
 import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getDefaultUUID;
+import static edu.uco.monitoria.crosscuting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.monitoria.domain.builder.MonitorDTOBuilder.getMonitorDTOBuilder;
 import static edu.uco.monitoria.domain.builder.OfferDTOBuilder.getOfferDTOBuilder;
 import static edu.uco.monitoria.domain.builder.PlaceDTOBuilder.getPlaceDTOBuilder;
@@ -42,6 +45,11 @@ public final class MonitoriaDTO {
     public static final MonitoriaDTO create(final UUID id, final MonitorDTO monitor,final PlaceDTO place, final ScheduleDTO schedule, final TopicDTO topic,
                                             final ReviewDTO review, final OfferDTO offer){
         return new MonitoriaDTO(id,monitor,place,schedule,topic,review,offer);
+    }
+
+    public static final MonitoriaDTO create(final String id, final MonitorDTO monitor, final PlaceDTO place, final ScheduleDTO schedule, final TopicDTO topic,
+                                            final ReviewDTO review, final OfferDTO offer){
+        return new MonitoriaDTO(getUUIDFromString(id),monitor,place,schedule,topic,review,offer);
     }
 
     public UUID getId() {
@@ -98,5 +106,9 @@ public final class MonitoriaDTO {
 
     public void setOffer(OfferDTO offer) {
         this.offer = offer;
+    }
+
+    public final String getUUIDAsString(){
+        return UUIDHelper.getUUIDAsString(getId());
     }
 }
