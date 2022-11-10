@@ -49,4 +49,23 @@ public class Messages {
                 "convert the string to UUID ";
     }
 
+    public static class MonitoriaSqlServerDAO{
+        private MonitoriaSqlServerDAO(){
+            super();
+        }
+
+        public static final String TECHNICAL_ERROR_WHEN_TRYING_TO_CREATE_MONITORIA = "There was an error when trying to create the information" +
+                "for the desired monitoria with id ";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_CREATE_MONITORIA = "There was an unexpected error when trying " +
+                "to create the monitoria";
+        public static final String TECHNICAL_ERROR_WHEN_TRYING_TO_UPDATE_THE_SELECTED_MONITORIA = "There was an error when trying to update " +
+                "the selected monitoria, please verify the information with monitoria id ";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_UPDATE_THE_SELECTED_MONITORIA = "There was an unexpected error " +
+                "when trying to update the monitoria";
+        public static final String TECHNICAL_ERROR_WHEN_TRYING_TO_DELETE_MONITORIA = "There was an error when trying to delete the selected " +
+                "monitoria with id ";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_DELETE_MONITORIA = "There was an unexpected error when trying " +
+                "to delete the selected monitoria";
+    }
+
 }
