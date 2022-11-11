@@ -1,13 +1,17 @@
 package edu.uco.monitoria.data.dao.relational.sqlserver;
 
 import edu.uco.monitoria.crosscuting.exception.data.DataCustomException;
+import edu.uco.monitoria.crosscuting.helper.ObjectHelper;
+import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
 import edu.uco.monitoria.crosscuting.messages.Messages;
 import edu.uco.monitoria.data.dao.MonitoriaDAO;
 import edu.uco.monitoria.data.dao.relational.DAORelational;
 import edu.uco.monitoria.domain.MonitoriaDTO;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MonitoriaSqlServerDAO extends DAORelational implements MonitoriaDAO {
@@ -58,8 +62,85 @@ public class MonitoriaSqlServerDAO extends DAORelational implements MonitoriaDAO
 
     @Override
     public List<MonitoriaDTO> find(MonitoriaDTO monitoria) {
-        return null;
+        var parameters = new ArrayList<Object>();
+        final var sqlBuilder = new StringBuilder();
+        createSelectfrom(sqlBuilder);
+        createWhere(sqlBuilder,budget,parameters);
+        createOrderBy(sqlBuilder);
+        return prepareAndExecuteQuery(sqlBuilder,parameters);
     }
+
+    private final void createSelectfrom(final StringBuilder sqlBuilder){
+        sqlBuilder.append("SELECT   mo.nombre AS monitorName, ");
+        sqlBuilder.append("         pl.nombreBloque AS block, ");
+        sqlBuilder.append("         pl.numeroAula AS classRoom, ");
+        sqlBuilder.append("         bu.idPerson AS idPerson, ");
+        sqlBuilder.append("         pe.idCard AS idCardPerson, ");
+        sqlBuilder.append("         pe.firstName AS firstNamePerson, ");
+        sqlBuilder.append("         pe.secondName AS secondNamePerson, ");
+        sqlBuilder.append("         pe.firstSurname AS PersonFirstSurname, ");
+        sqlBuilder.append("         pe.secondSurname AS PersonSecondSurname ");
+        sqlBuilder.append("FROM     Budget bu INNER JOIN Year ye on bu.id = ye.id ");
+        sqlBuilder.append("         INNER JOIN person pe on bu.id = pe.id ");
+    }
+
+    private final void createWhere(final StringBuilder sqlBuilder, final MonitoriaDTO monitoria, final List<Object> parameters){
+        var setWhere = true;
+        if(!ObjectHelper.isNull(monitoria.getId())){
+            if(UUIDHelper.isDefaultUUID(monitoria.getId())){
+                sqlBuilder.append("WHERE bu.id = ? ");
+                setWhere = false;
+                parameters.add(monitoria.getUUIDAsString());
+            }
+            if(UUIDHelper.isDefaultUUID(monitoria.getMonitor().getId())){
+                sqlBuilder.append(setWhere ? "WHERE":"AND ").append("mo.idMonitor = ? ");
+                setWhere = false;
+                parameters.add(monitoria.getMonitor().getUUIDAsString());
+            }
+            if(UUIDHelper.isDefaultUUID(monitoria.getOffer().getId())){
+                sqlBuilder.append(setWhere ? "WHERE":"AND ").append("mo.idOffer = ? ");
+                parameters.add(monitoria.getOffer().getUUIDAsString());
+            }
+            if(UUIDHelper.isDefaultUUID(monitoria.getPlace().getId())){
+                sqlBuilder.append(setWhere ? "WHERE":"AND ").append("mo.idPlace = ? ");
+                parameters.add(monitoria.getPlace().getUUIDAsString());
+            }
+            if(UUIDHelper.isDefaultUUID(monitoria.getReview().getId())){
+                sqlBuilder.append(setWhere ? "WHERE":"AND ").append("mo.idReview = ? ");
+                parameters.add(monitoria.getReview().getUUIDAsString());
+            }
+            if(UUIDHelper.isDefaultUUID(monitoria.getSchedule().getId())){
+                sqlBuilder.append(setWhere ? "WHERE":"AND ").append("mo.idSchedule = ? ");
+                parameters.add(monitoria.getSchedule().getUUIDAsString());
+            }
+            if(UUIDHelper.isDefaultUUID(monitoria.getTopic().getId())){
+                sqlBuilder.append(setWhere ? "WHERE":"AND ").append("mo.idTopic = ? ");
+                parameters.add(monitoria.getTopic().getUUIDAsString());
+            }
+        }
+    }
+
+    private void createOrderBy(StringBuilder sqlBuilder) {
+        sqlBuilder.append("ORDER BY mo.id ASC, ");
+        sqlBuilder.append("to.id ASC ");
+    }
+
+    private final List<MonitoriaDTO> fillResults(final ResultSet resultSet){
+        try{
+            var results = new ArrayList<MonitoriaDTO>();
+            while (resultSet.next()){
+                results.add(fillMonitoriaDTO(resultSet));
+            }
+            return results;
+        }catch (final DataCustomException exception){
+            throw exception;
+        }catch (final SQLException exception){
+            throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_ERROR_FILLING_RESULTS, exception);
+        }catch (final Exception exception){
+            throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_ERROR_FILLING_RESULTS, exception);
+        }
+    }
+
 
     @Override
     public void delete(MonitoriaDTO monitoria) {

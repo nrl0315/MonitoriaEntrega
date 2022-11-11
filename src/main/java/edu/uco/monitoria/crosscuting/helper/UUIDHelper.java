@@ -33,4 +33,8 @@ public final class UUIDHelper {
             throw CrosscutingCustomException.createTechnicalException(Messages.UUIDHelper.TECHNICAL_UNEXPECTED_ERROR_CREATING_UUID_FROM_STRING,exception);
         }
     }
+
+    public static final boolean isDefaultUUID(final UUID value){
+        return DEFAULT_UUID.equals(value);
+    }
 }
