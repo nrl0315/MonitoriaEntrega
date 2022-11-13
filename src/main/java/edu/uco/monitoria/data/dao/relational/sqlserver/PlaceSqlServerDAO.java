@@ -5,10 +5,16 @@ import edu.uco.monitoria.data.dao.relational.DAORelational;
 import edu.uco.monitoria.domain.PlaceDTO;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class PlaceSqlServerDAO extends DAORelational implements PlaceDAO {
     protected PlaceSqlServerDAO(final Connection connection) {
         super(connection);
+    }
+
+    @Override
+    public List<PlaceDTO> find(PlaceDTO place) {
+        return null;
     }
 
     @Override

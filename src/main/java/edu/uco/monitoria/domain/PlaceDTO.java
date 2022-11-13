@@ -33,6 +33,11 @@ public final class PlaceDTO {
         return new PlaceDTO(getUUIDFromString(id),block,classRoom);
     }
 
+    public static final PlaceDTO create(final UUID id){
+        return new PlaceDTO(id, EMPTY, EMPTY);
+    }
+
+
     public UUID getId() {
         return id;
     }
