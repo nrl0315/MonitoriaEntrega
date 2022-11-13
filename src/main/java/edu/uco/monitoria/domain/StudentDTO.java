@@ -42,6 +42,10 @@ public final class StudentDTO {
         return new StudentDTO(getUUIDFromString(id),name, surname,email,phoneNumber,degree);
     }
 
+    public static final StudentDTO create(final UUID id){
+        return new StudentDTO(id,EMPTY,EMPTY,EMPTY,ZERO,EMPTY);
+    }
+
     public UUID getId() {
         return id;
     }

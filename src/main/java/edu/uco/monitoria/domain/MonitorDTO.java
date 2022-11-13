@@ -50,6 +50,10 @@ public final class MonitorDTO {
         return new MonitorDTO(getUUIDFromString(id),name,surnane,email,phoneNumber,degree,note);
     }
 
+    public static final MonitorDTO create(final UUID id){
+        return new MonitorDTO(id,EMPTY,EMPTY,EMPTY,ZERO,EMPTY,DECIMAL_ZERO);
+    }
+
 
     public UUID getId() {
         return id;
