@@ -76,6 +76,10 @@ public class Messages {
                 "the desired student with the ID ";
         public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_CREATE_STUDENT = "There was an unknown " +
                 "error when trying to create the student";
+        public static final String TECHNICAL_ERROR_OPENING_THE_CONNECTION = "There was an error trying to open the connection" +
+                " with the data base";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_TRYING_TO_OPEN_THE_CONNECTION = "There was an unexpected error when " +
+                "trying to open the connection with the data base";
     }
 
 }
