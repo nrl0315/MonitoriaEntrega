@@ -87,7 +87,7 @@ public final class MonitorDTO {
         this.email = email;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -103,7 +103,7 @@ public final class MonitorDTO {
         this.degree = degree;
     }
 
-    public double getNote() {
+    public String getNote() {
         return note;
     }
 

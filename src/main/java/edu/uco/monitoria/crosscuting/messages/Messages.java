@@ -66,6 +66,16 @@ public class Messages {
                 "monitoria with id ";
         public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_DELETE_MONITORIA = "There was an unexpected error when trying " +
                 "to delete the selected monitoria";
+        public static final String TECHNICAL_ERROR_CREATING_MONITOR = "There was an error when trying to create the desired monitor " +
+                "with the id ";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_CREATING_MONITOR = "There was an unknown error when trying to create the monitor";
+        public static final String TECHNICAL_ERROR_TRYING_TO_CREATE_PLACE = "There was an error when trying to create the place with the id ";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_CREATE_THE_PLACE = "There was an unknown " +
+                "error when trying to create the place";
+        public static final String TECHNICAL_ERROR_TRYING_TO_CREATE_STUDENT = "There was an error when trying to create " +
+                "the desired student with the ID ";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_CREATE_STUDENT = "There was an unknown " +
+                "error when trying to create the student";
     }
 
 }
