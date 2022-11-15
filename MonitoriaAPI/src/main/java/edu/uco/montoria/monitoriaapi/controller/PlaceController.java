@@ -5,7 +5,10 @@ import edu.uco.monitoria.crosscuting.messages.Enumeration.Message;
 import edu.uco.monitoria.domain.PlaceDTO;
 import edu.uco.monitoria.domain.StudentDTO;
 import edu.uco.monitoria.service.command.CreatePlaceCommand;
+import edu.uco.monitoria.service.command.DeletePlaceCommand;
 import edu.uco.monitoria.service.command.implementation.CreatePlaceCommandImpl;
+import edu.uco.monitoria.service.command.implementation.DeletePlaceCommandImpl;
+import edu.uco.monitoria.service.usecase.place.implementation.DeletePlaceImpl;
 import edu.uco.montoria.monitoriaapi.controller.response.Response;
 import edu.uco.montoria.monitoriaapi.controller.validator.Validator;
 import edu.uco.montoria.monitoriaapi.controller.validator.place.CreatePlaceValidator;
@@ -21,6 +24,7 @@ import java.util.List;
 public class PlaceController {
 
     public CreatePlaceCommand createPlaceCommand = new CreatePlaceCommandImpl();
+    public DeletePlaceCommand deletePlaceCommand = new DeletePlaceCommandImpl();
 
     @GetMapping("/dummy")
     public StudentDTO holaMundo() {
@@ -67,5 +71,11 @@ public class PlaceController {
         }
 
         return new ResponseEntity<>(response, httpStatus);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<PlaceDTO> delete(PlaceDTO place) {
+        deletePlaceCommand.delete(place);
+        return new ResponseEntity<>(place, HttpStatus.OK);
     }
 }

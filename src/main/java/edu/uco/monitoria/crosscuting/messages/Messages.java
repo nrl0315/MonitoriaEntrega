@@ -80,6 +80,10 @@ public class Messages {
                 " with the data base";
         public static final String TECHNICAL_UNEXPECTED_ERROR_TRYING_TO_OPEN_THE_CONNECTION = "There was an unexpected error when " +
                 "trying to open the connection with the data base";
+        public static final String TECHNICAL_ERROR_WHEN_TRYING_TO_DELETE_PLACE = "There was an error when trying to delete the " +
+                "desired place";
+        public static final String TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_DELETE_PLACE = "There was an un unknown error when trying " +
+                "to delete the place";
     }
 
     public static class CreateStudentUseCaseImpl{

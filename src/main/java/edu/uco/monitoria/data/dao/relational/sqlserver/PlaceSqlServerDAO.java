@@ -43,6 +43,15 @@ public class PlaceSqlServerDAO extends DAORelational implements PlaceDAO {
 
     @Override
     public void delete(PlaceDTO place) {
+        final var sql = "DELET FROM lugar WHERE id = ?";
+        try(final var preparedStatement = getConnection().prepareStatement(sql)){
 
+        }catch(final SQLException exception){
+            String message = Messages.MonitoriaSqlServerDAO.TECHNICAL_ERROR_WHEN_TRYING_TO_DELETE_PLACE.concat(place.getUUIDAsString());
+            throw DataCustomException.createTechnicalException(message,exception);
+        }catch(final Exception exception){
+            throw DataCustomException.createTechnicalException(Messages.MonitoriaSqlServerDAO.TECHNICAL_UNEXPECTED_ERROR_WHEN_TRYING_TO_DELETE_PLACE,exception);
+        }
     }
+
 }
