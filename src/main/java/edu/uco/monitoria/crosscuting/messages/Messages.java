@@ -82,4 +82,15 @@ public class Messages {
                 "trying to open the connection with the data base";
     }
 
+    public static class CreateStudentUseCaseImpl{
+        private CreateStudentUseCaseImpl(){
+            super();
+        }
+
+        public static final String BUSSINES_STUDENT_ALREADY_EXISTS = "The student is registred";
+        public static final String BUSSINES_PLACE_ALREADY_EXISTS = "The place is registred";
+        public static final String BUSSINES_MONITOR_ALREADY_EXISTS = "The monitor is registred";
+
+    }
+
 }

@@ -78,7 +78,7 @@ public final class StudentDTO {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 

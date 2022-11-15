@@ -14,15 +14,9 @@ public class FindMonitorByIdImpl implements FindMonitorById {
     public FindMonitorByIdImpl(DAOFactory factory){
         this.factory = factory;
     }
-    @Override
-    public MonitorDTO execute(UUID id) {
-        MonitorDTO result = new MonitorDTO();
-        final MonitorDTO monitor = MonitorDTO.create(id);
-        final List<MonitorDTO> results = factory.getMonitorDAO().find(monitor);
 
-        if(!results.isEmpty()){
-            result = results.get(0);
-        }
-        return null;
+    @Override
+    public List<MonitorDTO> execute(MonitorDTO monitor) {
+        return factory.getMonitorDAO().find(monitor);
     }
 }
