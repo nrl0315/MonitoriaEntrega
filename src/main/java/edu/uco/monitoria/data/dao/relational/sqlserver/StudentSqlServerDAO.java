@@ -23,7 +23,7 @@ public class StudentSqlServerDAO extends DAORelational implements StudentDAO {
             preparedStatement.setString(2,student.getName());
             preparedStatement.setString(3, student.getSurname());
             preparedStatement.setString(4, student.getEmail());
-            preparedStatement.setString(5,student.getPhoneNumber());
+            preparedStatement.setString(5, String.valueOf(student.getPhoneNumber()));
             preparedStatement.setString(6,student.getDegree());
             preparedStatement.executeUpdate();
         } catch(SQLException exception){

@@ -1,4 +1,4 @@
-package edu.uco.montoria.monitoriaapi.controller.response;
+package edu.uco.monitoria.monitoriaapi.controller.response;
 
 
 import edu.uco.monitoria.crosscuting.helper.ObjectHelper;

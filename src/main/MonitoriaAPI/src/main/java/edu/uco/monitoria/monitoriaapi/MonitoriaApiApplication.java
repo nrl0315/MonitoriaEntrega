@@ -1,4 +1,4 @@
-package edu.uco.montoria.monitoriaapi;
+package edu.uco.monitoria.monitoriaapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

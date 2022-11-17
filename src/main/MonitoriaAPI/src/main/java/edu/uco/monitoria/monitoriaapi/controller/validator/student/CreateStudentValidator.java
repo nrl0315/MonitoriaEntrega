@@ -1,9 +1,9 @@
-package edu.uco.montoria.monitoriaapi.controller.validator.student;
+package edu.uco.monitoria.monitoriaapi.controller.validator.student;
 
 import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
 import edu.uco.monitoria.crosscuting.messages.Enumeration.Message;
 import edu.uco.monitoria.domain.StudentDTO;
-import edu.uco.montoria.monitoriaapi.controller.validator.Validator;
+import edu.uco.monitoria.monitoriaapi.controller.validator.Validator;
 
 import java.util.ArrayList;
 import java.util.List;

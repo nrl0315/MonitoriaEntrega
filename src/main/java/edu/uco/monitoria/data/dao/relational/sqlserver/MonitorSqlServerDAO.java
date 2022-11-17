@@ -1,7 +1,6 @@
 package edu.uco.monitoria.data.dao.relational.sqlserver;
 
 import edu.uco.monitoria.crosscuting.exception.data.DataCustomException;
-import edu.uco.monitoria.crosscuting.exception.data.MonitoriaCustomException;
 import edu.uco.monitoria.crosscuting.messages.Messages;
 import edu.uco.monitoria.data.dao.MonitorDAO;
 import edu.uco.monitoria.data.dao.relational.DAORelational;
@@ -25,9 +24,9 @@ public class MonitorSqlServerDAO extends DAORelational implements MonitorDAO {
             preparedStatement.setString(2,monitor.getName());
             preparedStatement.setString(3,monitor.getSurname());
             preparedStatement.setString(4, monitor.getEmail());
-            preparedStatement.setString(5, monitor.getPhoneNumber());
+            preparedStatement.setString(5, String.valueOf(monitor.getPhoneNumber()));
             preparedStatement.setString(6,monitor.getDegree());
-            preparedStatement.setString(7,monitor.getNote());
+            preparedStatement.setString(7, String.valueOf(monitor.getNote()));
             preparedStatement.executeUpdate();
         } catch(SQLException exception){
             String message = Messages.MonitoriaSqlServerDAO.TECHNICAL_ERROR_CREATING_MONITOR.concat(monitor.getUUIDAsString());

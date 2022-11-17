@@ -1,13 +1,13 @@
-package edu.uco.montoria.monitoriaapi.controller;
+package edu.uco.monitoria.monitoriaapi.controller;
 
 import edu.uco.monitoria.crosscuting.exception.data.MonitoriaCustomException;
 import edu.uco.monitoria.crosscuting.messages.Enumeration.Message;
 import edu.uco.monitoria.domain.MonitorDTO;
+import edu.uco.monitoria.monitoriaapi.controller.response.Response;
+import edu.uco.monitoria.monitoriaapi.controller.validator.Validator;
+import edu.uco.monitoria.monitoriaapi.controller.validator.monitor.CreateMonitorValidator;
 import edu.uco.monitoria.service.command.CreateMonitorCommand;
 import edu.uco.monitoria.service.command.implementation.CreateMonitorCommandImpl;
-import edu.uco.montoria.monitoriaapi.controller.response.Response;
-import edu.uco.montoria.monitoriaapi.controller.validator.Validator;
-import edu.uco.montoria.monitoriaapi.controller.validator.monitor.CreateMonitorValidator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

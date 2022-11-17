@@ -1,17 +1,13 @@
-package edu.uco.montoria.monitoriaapi.controller;
+package edu.uco.monitoria.monitoriaapi.controller;
 
 import edu.uco.monitoria.crosscuting.exception.data.MonitoriaCustomException;
 import edu.uco.monitoria.crosscuting.messages.Enumeration.Message;
-import edu.uco.monitoria.domain.PlaceDTO;
 import edu.uco.monitoria.domain.StudentDTO;
-import edu.uco.monitoria.service.command.CreatePlaceCommand;
-import edu.uco.monitoria.service.command.DeletePlaceCommand;
-import edu.uco.monitoria.service.command.implementation.CreatePlaceCommandImpl;
-import edu.uco.monitoria.service.command.implementation.DeletePlaceCommandImpl;
-import edu.uco.monitoria.service.usecase.place.implementation.DeletePlaceImpl;
-import edu.uco.montoria.monitoriaapi.controller.response.Response;
-import edu.uco.montoria.monitoriaapi.controller.validator.Validator;
-import edu.uco.montoria.monitoriaapi.controller.validator.place.CreatePlaceValidator;
+import edu.uco.monitoria.monitoriaapi.controller.response.Response;
+import edu.uco.monitoria.monitoriaapi.controller.validator.Validator;
+import edu.uco.monitoria.monitoriaapi.controller.validator.student.CreateStudentValidator;
+import edu.uco.monitoria.service.command.CreateStudentCommand;
+import edu.uco.monitoria.service.command.implementation.CreateStudentCommandImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/place")
-public class PlaceController {
 
-    public CreatePlaceCommand createPlaceCommand = new CreatePlaceCommandImpl();
-    public DeletePlaceCommand deletePlaceCommand = new DeletePlaceCommandImpl();
+@RestController
+@RequestMapping("/api/student")
+public class StudentController {
+    public CreateStudentCommand createStudentCommand = new CreateStudentCommandImpl();
 
     @GetMapping("/dummy")
     public StudentDTO holaMundo() {
@@ -32,20 +27,20 @@ public class PlaceController {
     }
 
     @PostMapping
-    public ResponseEntity<Response<PlaceDTO>> create(@RequestBody PlaceDTO place) {
+    public ResponseEntity<Response<StudentDTO>> create(@RequestBody StudentDTO student) {
 
-        final Response<PlaceDTO> response = new Response<>();
+        final Response<StudentDTO> response = new Response<>();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            Validator<PlaceDTO> validator = new CreatePlaceValidator();
-            List<Message> messages = validator.validate(place);
+            Validator<StudentDTO> validator = new CreateStudentValidator();
+            List<Message> messages = validator.validate(student);
 
             if(messages.isEmpty()) {
-                createPlaceCommand.execute(place);
+                createStudentCommand.execute(student);
             }
 
-            final List<PlaceDTO> data = new ArrayList<>();
-            data.add(place);
+            final List<StudentDTO> data = new ArrayList<>();
+            data.add(student);
             response.setData(data);
 
             response.addSuccesMessages("The budget has been create succesfully");
@@ -71,11 +66,5 @@ public class PlaceController {
         }
 
         return new ResponseEntity<>(response, httpStatus);
-    }
-
-    @DeleteMapping
-    public ResponseEntity<PlaceDTO> delete(PlaceDTO place) {
-        deletePlaceCommand.delete(place);
-        return new ResponseEntity<>(place, HttpStatus.OK);
     }
 }

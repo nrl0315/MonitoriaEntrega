@@ -1,12 +1,10 @@
-package edu.uco.montoria.monitoriaapi.controller.validator.monitor;
+package edu.uco.monitoria.monitoriaapi.controller.validator.monitor;
 
 import edu.uco.monitoria.crosscuting.helper.UUIDHelper;
 import edu.uco.monitoria.crosscuting.messages.Enumeration.Message;
 import edu.uco.monitoria.domain.MonitorDTO;
-import edu.uco.montoria.monitoriaapi.controller.validator.Validator;
-import org.springframework.validation.annotation.Validated;
+import edu.uco.monitoria.monitoriaapi.controller.validator.Validator;
 
-import javax.management.monitor.Monitor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
